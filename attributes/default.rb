@@ -20,6 +20,8 @@
 case node['platform_family']
 when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x'
   default['nodejs']['install_method'] = 'package'
+when 'windows'
+  force_override['nodejs']['install_method'] = 'windows'
 else
   default['nodejs']['install_method'] = 'source'
 end
@@ -38,5 +40,6 @@ default['nodejs']['binary']['url'] = nil # Auto generated
 default['nodejs']['binary']['checksum']['linux_x64'] = 'd4eb161e4715e11bbef816a6c577974271e2bddae9cf008744627676ff00036a'
 default['nodejs']['binary']['checksum']['linux_x86'] = 'f9b2ca03016e45bc35d2441a63a73db94d3e7b92350f15577d796467b9f7efb0'
 default['nodejs']['binary']['checksum']['linux_arm64'] = '7aa69b6c8cff578d0d97d5bd4f76941b2fade5476f0408d53828666ee427dd4e'
+default['nodejs']['binary']['checksum']['windows_x86']  = 'f2414a5f82ddecee5f9ca9fe63ceb8047d740479af797c9db98679d30a8e51f8'
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2

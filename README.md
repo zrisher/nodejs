@@ -85,6 +85,17 @@ include_recipe "nodejs"
 include_recipe "nodejs::nodejs_from_source"
 ```
 
+#### Windows
+
+Install node from packages:
+
+```chef
+node['nodejs']['install_method'] = 'windows' # Not necessary because it's the default on windows platforms
+include_recipe "nodejs"
+# Or
+include_recipe "nodejs::nodejs_from_windows"
+```
+
 ## NPM
 
 Npm is included in nodejs installs by default. By default, we are using it and call it `embedded`. Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['nodejs']['npm']['install_method']`
